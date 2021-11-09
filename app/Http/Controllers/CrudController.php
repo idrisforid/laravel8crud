@@ -9,7 +9,10 @@ use Session;
 class CrudController extends Controller
 {
     public function showData(){
-        return view('show_data');
+       // $showData = Crud::all();
+       //$showData = Crud::paginate(5);
+       $showData = Crud::simplePaginate(5);
+        return view('show_data',compact('showData'));
     }
 
     public function addData(){
@@ -34,6 +37,6 @@ class CrudController extends Controller
         $crud->email= $request->email;
         $crud->save();
         Session::flash('msg','Data successfully Added');
-        return redirect()->back();
+        return redirect('/');
     }
 }
