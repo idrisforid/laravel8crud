@@ -13,14 +13,22 @@
   <body>
     <div class="container">
         <a href="{{url('/')}}" class="btn btn-primary my-3">Show Data</a>
-        <form action="" method="">
+        
+        <form action="{{url('/store-data')}}" method="post">
+            @csrf
             <div class="form-group">
                 <label for="">Name</label>
                 <input type="text" class="form-control" name="name" placeholder="Enter Your Name">
+                @error('name')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter Your email">
+                <input type="text" class="form-control" name="email" placeholder="Enter Your email">
+                @error('email')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
             </div>
             <input type="submit" class="btn btn-primary" value="Submit">
         </form>    
