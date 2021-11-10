@@ -66,4 +66,11 @@ class CrudController extends Controller
         return redirect('/');
     }
 
+    public function deleteData($id=null){
+        $deleteData = Crud::find($id);
+        $deleteData->delete();
+        Session::flash('msg','Data successfully Deleted');
+        return redirect('/');
+    }
+
 }
